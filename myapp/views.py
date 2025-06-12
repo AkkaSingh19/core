@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from .tasks import send_welcome_email
 
 
 def register_view(request):
@@ -27,6 +28,8 @@ def register_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
+        send_welcome_email.delay(email)
+
         messages.success(request, "Account created successfully! Please log in.")
         return redirect('login')
 
@@ -42,7 +45,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')  # redirect to dashboard after successful login
+            return redirect('dashboard')
         else:
             messages.error(request, "Invalid username or password")
 
@@ -50,7 +53,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  # redirect to login page after logout
+    return redirect('login')
 
 @login_required
 def dashboard(request):
