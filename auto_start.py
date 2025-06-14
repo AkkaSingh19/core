@@ -48,9 +48,9 @@ if __name__ == "__main__":
         public_url = get_ngrok_url()
         print(f"Ngrok URL detected: {public_url}")
         set_webhook(public_url)
-        print("✅ Webhook updated successfully.")
+        print("Webhook updated successfully.")
 
-        print("🎯 Everything is up and running now!")
+        print("Everything is up and running now!")
 
         # Keep running until user interrupts
         django_proc.wait()
