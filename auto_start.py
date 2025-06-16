@@ -1,18 +1,21 @@
 import subprocess
 import time
+
 import requests
-import os
 from decouple import config
 
-BOT_TOKEN = config('BOT_TOKEN')
+BOT_TOKEN = config("BOT_TOKEN")
+
 
 def start_django():
     print("Starting Django server...")
     return subprocess.Popen(["python", "manage.py", "runserver"])
 
+
 def start_ngrok():
     print("Starting ngrok tunnel...")
     return subprocess.Popen(["ngrok", "http", "8000"])
+
 
 def get_ngrok_url():
     retries = 0
@@ -31,11 +34,13 @@ def get_ngrok_url():
         time.sleep(2)
     raise Exception("Ngrok tunnel not found after waiting.")
 
+
 def set_webhook(public_url):
     webhook_url = f"{public_url}/webhook/"
     telegram_api = f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook"
     response = requests.get(telegram_api, params={"url": webhook_url})
     print("Webhook response:", response.json())
+
 
 if __name__ == "__main__":
     django_proc = start_django()

@@ -7,19 +7,26 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='TelegramUser',
+            name="TelegramUser",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('telegram_id', models.BigIntegerField(unique=True)),
-                ('username', models.CharField(blank=True, max_length=255, null=True)),
-                ('first_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('last_name', models.CharField(blank=True, max_length=255, null=True)),
-                ('date_joined', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("telegram_id", models.BigIntegerField(unique=True)),
+                ("username", models.CharField(blank=True, max_length=255, null=True)),
+                ("first_name", models.CharField(blank=True, max_length=255, null=True)),
+                ("last_name", models.CharField(blank=True, max_length=255, null=True)),
+                ("date_joined", models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]

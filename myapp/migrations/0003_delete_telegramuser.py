@@ -6,11 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('myapp', '0002_rename_telegram_id_telegramuser_chat_id_and_more'),
+        ("myapp", "0002_rename_telegram_id_telegramuser_chat_id_and_more"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='TelegramUser',
+            name="TelegramUser",
         ),
     ]

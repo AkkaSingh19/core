@@ -14,14 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
+
 from telebot import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-    path('', include('myapp.urls')),
-    #path('telegram/', include('telebot.urls')),
-    path('webhook/', views.telegram_webhook, name='telegram_webhook')
+    path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
+    path("", include("myapp.urls")),
+    # path('telegram/', include('telebot.urls')),
+    path("webhook/", views.telegram_webhook, name="telegram_webhook"),
 ]

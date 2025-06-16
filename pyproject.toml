@@ -13,5 +13,14 @@ dependencies = [
     "python-decouple>=3.8",
     "redis>=6.2.0",
     "requests>=2.32.4",
+    "supervisor>=4.2.5",
     "urllib3>=2.4.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "flake8>=7.2.0",
+    "isort>=6.0.1",
+    "mypy>=1.16.0",
 ]
